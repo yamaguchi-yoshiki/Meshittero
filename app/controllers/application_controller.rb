@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  # 未ログインでtopにリダイレクト
+  before_action :authenticate_user!, except: [:top]
+  # devise
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resouce)
